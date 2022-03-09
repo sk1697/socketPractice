@@ -11,8 +11,8 @@ public_ip_address = requests.get('https://api.ipify.org').text
 print(public_ip_address)
 
 
-server = StreamingServer(local_ip_address, 9999)
-receiver = AudioReceiver(local_ip_address,8888)
+server = StreamingServer(local_ip_address, 9999) #9999
+receiver = AudioReceiver(local_ip_address,8888) #8888
 
 
 def start_listening():
@@ -20,6 +20,7 @@ def start_listening():
     t2 = threading.Thread(target=receiver.start_server())
     t1.start()
     t2.start()
+    print("Local IP Server Start")
 
 def start_camera_stream():
     camera_client = CameraClient(text_target_ip.get(1.0,'end-1c'), 7777)
